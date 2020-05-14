@@ -4,10 +4,11 @@ module Ltree
       options = {
         fragment: :id,
         parent_fragment: :parent_id,
-        path: :path
+        path: :path,
+        optional: true
       }.merge(options)
 
-      options.assert_valid_keys(:fragment, :parent_fragment, :path)
+      options.assert_valid_keys(:fragment, :parent_fragment, :path, :optional)
 
       cattr_accessor :ltree_fragment_column, :ltree_parent_fragment_column, :ltree_path_column
 
@@ -15,8 +16,14 @@ module Ltree
       self.ltree_parent_fragment_column = options[:parent_fragment]
       self.ltree_path_column = options[:path]
 
-      belongs_to :parent, class_name: name, foreign_key: ltree_parent_fragment_column
+      belongs_to_parent_opts = {
+        class_name: name,
+        foreign_key: ltree_parent_fragment_column,
+        primary_key: ltree_fragment_column,
+        optional: true
+      }
 
+      belongs_to :parent, belongs_to_parent_opts
       validate :prevent_circular_paths, if: :ltree_parent_fragment_changed?
 
       after_create :commit_path
