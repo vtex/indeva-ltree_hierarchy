@@ -1,0 +1,19 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: indeva-ltree_hierarchy
+  description: Fork library used by indeva to Assemble trees
+  annotations:
+    github.com/project-slug: vtex/indeva-ltree_hierarchy
+    vtex.com/o11y-os-index: ""
+    vtex.com/janus-acronym: ""
+    grafana/dashboard-selector: ""
+    backstage.io/techdocs-ref: dir:../
+  tags:
+    - ruby
+spec:
+  type: library
+  lifecycle: stable
+  owner: sales-experience
+  system: indeva
+  dependsOn: []
