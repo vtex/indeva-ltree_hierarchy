@@ -10,6 +10,8 @@ metadata:
     grafana/dashboard-selector: ""
     backstage.io/techdocs-ref: dir:../
     vtex.com/application-id: JKJI3QEN
+    vtex.com/sdd-check-skip: 'true'
+    vtex.com/sdd-check-skip-reason: The component is in a KTLO mode. There is no active development for years.
   tags:
     - ruby
 spec:
